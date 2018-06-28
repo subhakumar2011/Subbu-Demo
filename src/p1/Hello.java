@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
  */
 @WebServlet("/Hello")
 public class Hello extends HttpServlet {
+	//This is for documentation
 	private static final long serialVersionUID = 1L;
 	static final  Logger log=Logger.getLogger(Hello.class);
        
