@@ -2,12 +2,15 @@ package p1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
 
@@ -36,8 +39,12 @@ public class Hello extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out=response.getWriter();
-		
 		try {
+			String s="hsdfew";
+			if(s.isEmpty())
+				out.println("String is empty");
+			else
+				out.println("String has data");
 		log.info("Hello servlet started");
 		log.debug("hello servlet debugginh");
 		
@@ -51,6 +58,15 @@ public class Hello extends HttpServlet {
 		out.println(request.getMethod());
 		out.println(request.getContextPath());
 		out.println(request.getRequestedSessionId());
+		out.println(request.getLocalAddr());
+		Collection col=response.getHeaderNames();
+		Iterator it=col.iterator();
+		while(it.hasNext())
+		{
+			out.println(it.next());
+			
+		}
+		out.println(response.getBufferSize());
 		}
 		catch(Exception e)
 		{
@@ -66,6 +82,7 @@ public class Hello extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
 	}
 
 }
